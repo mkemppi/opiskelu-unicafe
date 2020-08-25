@@ -11,16 +11,22 @@ const Statistics = ({ good, neutral, bad }) => {
 
   const vastauksia = good + neutral + bad;
 
+  if (vastauksia>0) {
+    return (
+      <div>
+      <h3>Tilastot</h3>
+      Hyviä palautteita <b>{good}</b><br/>
+      Neutraaleja palautteita <b>{neutral}</b><br/>
+      Huonoja palautteita <b>{bad}</b><br/>
+      Palautteita yhteensä <b>{vastauksia}</b><br/>
+      Keskiarvo <b>{((good * 1) + (bad * -1))/vastauksia }</b><br/>
+      Positiivia palautteita <b>{ (good / vastauksia) * 100 }%</b><br/>
+      </div>
+    )
+  }
+
   return (
-    <div>
-    <h3>Tilastot</h3>
-    Hyviä palautteita <b>{good}</b><br/>
-    Neutraaleja palautteita <b>{neutral}</b><br/>
-    Huonoja palautteita <b>{bad}</b><br/>
-    Palautteita yhteensä <b>{vastauksia}</b><br/>
-    Keskiarvo <b>{((good * 1) + (bad * -1))/vastauksia }</b><br/>
-    Positiivia palautteita <b>{ (good / vastauksia) * 100 }%</b><br/>
-    </div>
+    <div><h3>Ei vastauksia</h3></div>
   )
 }
 
