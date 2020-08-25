@@ -7,7 +7,47 @@ const Button = (props) => (
   </button>
 )
 
-const Statistics = ({ good, neutral, bad }) => {
+const StatisticsLine = (props) => {
+  const { good, neutral, bad } = props.value
+  const vastauksia = good + neutral + bad;
+  if(props.text==="good") {
+    return (
+      <div>Hyviä palautteita <b>{good}</b></div>      
+    )
+  }
+  if(props.text==="neutral") {
+    return (
+      <div>Neutraaleja palautteita <b>{neutral}</b></div>      
+    )
+  }
+  if(props.text==="bad") {
+    return (
+      <div>Huonoja palautteita <b>{bad}</b></div>      
+    )
+  }
+  if(props.text==="total") {
+    return (
+      <div>Palautteita yhteensä <b>{vastauksia}</b></div>      
+    )
+  }
+  if(props.text==="average") {
+    return (
+      <div>Keskiarvo <b>{((good * 1) + (bad * -1))/vastauksia }</b></div>      
+    )
+  }
+  if(props.text==="positive") {
+    return (
+      <div>Positiivisia palautteita <b>{ (good / vastauksia) * 100 }%</b></div>      
+    )
+  }
+  return (
+    <div></div>
+  )
+
+}
+
+const Statistics = (props) => {
+  const { good, neutral, bad } = props
 
   const vastauksia = good + neutral + bad;
 
@@ -15,12 +55,12 @@ const Statistics = ({ good, neutral, bad }) => {
     return (
       <div>
       <h3>Tilastot</h3>
-      Hyviä palautteita <b>{good}</b><br/>
-      Neutraaleja palautteita <b>{neutral}</b><br/>
-      Huonoja palautteita <b>{bad}</b><br/>
-      Palautteita yhteensä <b>{vastauksia}</b><br/>
-      Keskiarvo <b>{((good * 1) + (bad * -1))/vastauksia }</b><br/>
-      Positiivia palautteita <b>{ (good / vastauksia) * 100 }%</b><br/>
+      <StatisticsLine text="good" value={props} />
+      <StatisticsLine text="neutral" value={props} />
+      <StatisticsLine text="bad" value={props} />
+      <StatisticsLine text="total" value={props} />
+      <StatisticsLine text="average" value={props} />
+      <StatisticsLine text="positive" value={props} />
       </div>
     )
   }
