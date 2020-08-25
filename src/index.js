@@ -17,11 +17,11 @@ const App = () => {
     <div>
       <h1>Anna palautetta</h1>
       <Button handleClick={() => setGood(good + 1)} text="HYVÄ" />
-      <Button handleClick={() => setNeutral(neutral + 1)} text="IHAN OK" />
+      <Button handleClick={() => setNeutral(neutral + 1)} text="NEUTRAALI" />
       <Button handleClick={() => setBad(bad + 1)} text="HUONO" />
       <h3>Tilastot</h3>
       Hyviä palautteita <b>{good}</b><br/>
-      Ihan ok palautteita <b>{neutral}</b><br/>
+      Neutraaleja palautteita <b>{neutral}</b><br/>
       Huonoja palautteita <b>{bad}</b><br/>
     </div>
   )
